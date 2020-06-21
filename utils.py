@@ -58,7 +58,7 @@ def write_image(img, file_name):
 def create_output_folder():
     working_dir = Path.cwd() / 'data'
 
-    output_dir = Path.cwd() / 'output'
+    output_dir = Path.cwd() / 'undist_output'
     if output_dir.is_dir():
         print("output folder exists")
         try:

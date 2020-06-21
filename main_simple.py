@@ -1,5 +1,5 @@
 '''
-Removes barrel distortions from images (.bmp) in the /data.
+Removes distortions from images (.bmp) using config.json
 Uses a simpler progress bar (without tqdm).
 usage:
     main_simple.py
