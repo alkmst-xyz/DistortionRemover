@@ -1,4 +1,6 @@
 import cv2
+
+# Built-in modules
 import json
 from pathlib import Path
 
@@ -7,8 +9,9 @@ def load_config():
     """Loads the config.json
 
     Returns:
-        [dict]: [Contains meta_data, camera_params]
+        dict: Contains meta_data, camera_params
     """
+
     try:
         with open('config.json') as config_file:
             config = json.load(config_file)

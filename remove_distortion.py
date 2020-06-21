@@ -1,11 +1,24 @@
-# https://hackaday.io/project/12384-autofan-automated-control-of-air-flow/log/41862-correcting-for-lens-distortions
-# https://docs.opencv.org/2.4/modules/calib3d/doc/camera_calibration_and_3d_reconstruction.html
+"""
+This module contains is used to remove distortions from imgaes using cv2.
+"""
 
 import cv2
 import numpy as np
 
 
 class DistortionRemover:
+    """
+    Class used to represent a image and its distortion values.
+    Generate Distortion coefficients (D) using calibrate.py
+
+    Attributes:
+        image (numpy.array): Image array
+        config (dict): Image config containing distortion coefficients (D)
+
+    Methods:
+        set_constants(): Set camera matrix (K), distortion coefficients (D)
+        image_undist(): Removes distortions from image based on K, D
+    """
 
     def __init__(self, image, config):
         self.image = image
@@ -39,7 +52,7 @@ class DistortionRemover:
 
         return cam_mat, dist_coeff
 
-    def barrel_undist(self):
+    def image_undist(self):
         img = self.image
         height, width = img.shape[:2]
         cam_mat, dist_coeff = self.set_constants()

@@ -19,7 +19,7 @@ def main():
 
     for img_file in tqdm(img_file_list):
         src = read_image(img_file, config)
-        dst = DistortionRemover(src, config).barrel_undist()
+        dst = DistortionRemover(src, config).image_undist()
         out_file = str(output_path / (img_file.stem + "_undist.bmp"))
         write_image(dst, out_file)
 
