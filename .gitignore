@@ -1,6 +1,6 @@
-/.vscode
-/__pycache__
-/data
-/undist_output
-/calibration_images
-/output
+.vscode/
+__pycache__/
+data/
+undist_output/
+calibration_images/
+output/
