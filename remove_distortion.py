@@ -4,23 +4,16 @@
 import cv2
 import numpy as np
 
-# local modules
-from utils import load_config
-
 
 class DistortionRemover:
 
-    def __init__(self, image):
+    def __init__(self, image, config):
         self.image = image
-
-    def set_config(self):
-        # Loading camera and distortions constants
-        config = load_config()['camera_params']
-        return config
+        self.config = config['camera_params']
 
     def set_constants(self):
         img = self.image
-        config = self.set_config()
+        config = self.config
 
         height, width = img.shape[:2]
 

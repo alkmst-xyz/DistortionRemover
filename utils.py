@@ -4,13 +4,17 @@ from pathlib import Path
 
 
 def load_config():
+    """Loads the config.json
+
+    Returns:
+        [dict]: [Contains meta_data, camera_params]
+    """
     try:
         with open('config.json') as config_file:
             config = json.load(config_file)
 
     except FileNotFoundError:
-        print("config.json not found in working directory")
-        print("Using in-built values")
+        print("config.json not found; Using default values")
         config = {
             "meta_data": {
                 "width": 256,
@@ -30,10 +34,10 @@ def load_config():
     return config
 
 
-def read_image_file(img_file):
-    config = load_config()['meta_data']
+def read_image(img_file, config):
+    meta_data = config['meta_data']
 
-    width, height, channels = config.values()
+    width, height, channels = meta_data.values()
 
     src = cv2.imread(str(img_file), cv2.IMREAD_UNCHANGED)
     src = cv2.resize(src, (width, height))
@@ -41,7 +45,7 @@ def read_image_file(img_file):
     return src
 
 
-def write_image_file(img, file_name):
+def write_image(img, file_name):
 
     cv2.imwrite(file_name, img)
 
@@ -53,14 +57,14 @@ def create_output_folder():
 
     output_dir = Path.cwd() / 'output'
     if output_dir.is_dir():
-        print("Output folder exists")
+        print("output folder exists")
         try:
             output_dir.rmdir()
         except OSError as err:
             print("Error: %s : %s" % (output_dir, err.strerror))
             print("Overwriting...")
     else:
-        print("Output folder created")
+        print("output folder created")
         output_dir.mkdir()
 
     return working_dir, output_dir
