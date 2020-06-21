@@ -1,16 +1,26 @@
-To get camera matrix:
+## Prerequisites:
 
-    --common.py
-    --calibrate.py
+- cv2 >= 4.2
+- numpy >= 1.18
+- tqdm (Progress bar : pip install tqdm)
 
-To get undistorted images (.bmp):
+## To get camera matrix:
 
-    --main.py
-    --remove_distortion.py
-    --utils.py
+- common.py
+- calibrate.py
 
-Data:
+## To get undistorted images (.bmp):
 
-    --calibration_images
-    --data
-    --output
+- main.py : Applies barrel_undist to images(.bmp) in data folder
+- remove_distortion.py: Contains the DistortionRemover
+- utils.py: Utilities to read and write images, load config, etc.
+
+## Data:
+
+- calibration_images
+- data
+- output
+
+## Future modifications:
+
+- Calibrate outputs config.json

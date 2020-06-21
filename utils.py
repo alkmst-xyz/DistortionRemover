@@ -1,5 +1,6 @@
 import cv2
 import json
+from pathlib import Path
 
 
 def load_config():
@@ -45,3 +46,21 @@ def write_image_file(img, file_name):
     cv2.imwrite(file_name, img)
 
     return True
+
+
+def create_output_folder():
+    working_dir = Path.cwd() / 'data'
+
+    output_dir = Path.cwd() / 'output'
+    if output_dir.is_dir():
+        print("Output folder exists")
+        try:
+            output_dir.rmdir()
+        except OSError as err:
+            print("Error: %s : %s" % (output_dir, err.strerror))
+            print("Overwriting...")
+    else:
+        print("Output folder created")
+        output_dir.mkdir()
+
+    return working_dir, output_dir
